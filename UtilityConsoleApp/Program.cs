@@ -12,10 +12,12 @@ var utilities =
     .Select(type => (IUtility)Activator.CreateInstance(type))
     .ToList();
 
-foreach (var name in utilities.Select(x=> x.Name))
+for (int i = 0; i < utilities.Count; i++)
 {
-    utilsToShow += $"{name}  "; 
+    var name = utilities.Select(x => x.Name).ToArray();
+    utilsToShow =  string.Concat(utilsToShow, string.Concat(name[i], "  "));
 }
+
 Console.ForegroundColor = ConsoleColor.Blue;
 Console.WriteLine($"Please Enter Your Utilily Name : {utilsToShow} " );
 
